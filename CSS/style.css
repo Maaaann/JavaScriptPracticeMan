@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: black;
+    align-items: center ;
+}
+
+.Print-Msg-box {
+    width: 600px;
+    padding: 20px 15px;
+    border: 1px solid blueviolet;
+    background-color: #6f6f6f;
+}
+
+button , input{
+    width: 100px;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+button{
+    background-color: red;
+    color: grey;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+button:hover{
+    opacity: 1;
+    transition: 0.5s;
+}
