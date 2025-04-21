@@ -3,15 +3,18 @@
 var buttonEle = document.querySelector("#btn");
 var inputEle = document.querySelector("#Input");
 
-buttonEle.onclick = function(){
+buttonEle.addEventListener('click',togPassword);
+
+
+function togPassword(){
     if (buttonEle.getAttribute('data-text')=="show"){
         inputEle.setAttribute('type','text');
-        buttonEle.setAttribute('data-text','hide');
-        buttonEle.innerHTML="Hide";
+        this.setAttribute('data-text','hide');
+        this.innerHTML="Hide";
     }else{
         inputEle.setAttribute('type','password');
-        buttonEle.setAttribute('data-text','show');
-        buttonEle.innerHTML="show";
+        this.setAttribute('data-text','show');
+        this.innerHTML="show";
     }
 }
 
