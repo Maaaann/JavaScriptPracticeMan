@@ -26,4 +26,3 @@ function create_table(){
     body.appendChild(table) // put the table element inside the body 
 }
 
- 
