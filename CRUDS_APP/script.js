@@ -13,8 +13,8 @@ let submit = document.getElementById("submit");
 
 function get_total(){
     if(price.value !=""){
-        let result = (Number(price.value) + Number(taxes.value) +Number(ads.value))  
-        - Number(discount.value);
+        let result = (+price.value + +taxes.value + +ads.value)  
+        - +discount.value;
         total.innerHTML= result; 
     }
 }
