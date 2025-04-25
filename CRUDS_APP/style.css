@@ -60,3 +60,12 @@ button:hover{
     background: #ee8139;
     letter-spacing: 1px;
 }
+
+.btnsearch{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnsearch button{
+    width: 45%;
+}
