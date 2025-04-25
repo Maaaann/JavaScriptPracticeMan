@@ -9,12 +9,21 @@ let category = document.getElementById("category");
 let submit = document.getElementById("submit");
 
 
-//Getting the Total
-
+//-------------------Getting the Total---------------//
 function get_total(){
+
     if(price.value !=""){
         let result = (+price.value + +taxes.value + +ads.value)  
         - +discount.value;
-        total.innerHTML= result; 
-    }
-}
+        total.innerHTML= result; // print the result
+        total.style.background = "#040"; // turn green 
+
+    }else {
+        total.innerHTML = "";
+        total.style.background = "#d14339";
+
+    } // end of the if state
+
+} //end of total function
+
+
