@@ -52,7 +52,16 @@ submit.onclick = function create_product(){
         total:total.innerHTML,
     }
     // adding the data to our array
-    data_product.push(newProduct);
+    if(newProduct.count > 1){   // to create products with the input count 
+        for(let i = 0; i < newProduct.count; i++){
+            data_product.push(newProduct);
+        }
+    }else{
+        data_product.push(newProduct);
+    }
+        
+
+
     // storing the data local & converting it to strings  
     localStorage.setItem("product",JSON.stringify(data_product));
 
@@ -118,7 +127,9 @@ function delete_data(i){
 }
 
 function delete_all(){
-    localStorage.clear() 
+    localStorage.clear() // remove from local storage 
+    data_product.splice(0) // remove from array
+    show_data() // redrawing the table
 }
 
 
