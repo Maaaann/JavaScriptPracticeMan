@@ -43,13 +43,13 @@ show_data()
 
 submit.onclick = function create_product(){
     let newProduct = {
-        title:title.value,
+        title:title.value.toLowerCase(),
         price:price.value,
         taxes:taxes.value,
         ads:ads.value,
         discount:discount.value,
         count:count.value,
-        category:category.value,
+        category:category.value.toLowerCase(),
         total:total.innerHTML,
     }
     // adding the data to our array
@@ -172,12 +172,14 @@ function get_search_mood(id){
 
     if(id == "searchTitle"){
         search_mood = "title";
-        search.placeholder = "Search By Title"
+        search.placeholder = "Search By Title";
     }else{
-        search_mood="category"
-        search.placeholder = "Search By Category"
+        search_mood="category";
+        search.placeholder = "Search By Category";
     }
 search.focus()
+search.value="";
+show_data()
 }
 
 function searchData(value){
@@ -185,7 +187,7 @@ function searchData(value){
     if (search_mood == "title"){
 
         for(let i =0 ; i <data_product.length; i++){
-            if(data_product[i].title.includes(value)){
+            if(data_product[i].title.includes(value.toLowerCase())){
 
                 table += `
                     <tr>
@@ -201,16 +203,12 @@ function searchData(value){
                         <td> <button onclick ="delete_data(${i})" id="delete">delete</button> </td>
                     </tr>
                     `
-
-
             }
-        }
-
-
+        } // end of the search by title loop
 
     }else{
         for(let i =0 ; i <data_product.length; i++){
-            if(data_product[i].category.includes(value)){
+            if(data_product[i].category.includes(value.toLowerCase())){
 
                 table += `
                     <tr>
@@ -226,14 +224,8 @@ function searchData(value){
                         <td> <button onclick ="delete_data(${i})" id="delete">delete</button> </td>
                     </tr>
                     `
-
-
             }
-        }
-
-
-    }
+        } // end of the search by category loop
+    } 
         document.getElementById('tbody').innerHTML = table;
-
-
 }
