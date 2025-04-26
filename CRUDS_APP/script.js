@@ -8,7 +8,8 @@ let count = document.getElementById("count");
 let category = document.getElementById("category");
 let submit = document.getElementById("submit");
 
-
+let mood = "create";
+let tmp ;
 //-------------------Getting the Total---------------//
 
 function get_total(){
@@ -52,13 +53,21 @@ submit.onclick = function create_product(){
         total:total.innerHTML,
     }
     // adding the data to our array
-    if(newProduct.count > 1){   // to create products with the input count 
+    if (mood === "create"){
+        if(newProduct.count > 1){   // to create products with the input count 
         for(let i = 0; i < newProduct.count; i++){
+            data_product.push(newProduct);
+            }
+        }else{
             data_product.push(newProduct);
         }
     }else{
-        data_product.push(newProduct);
+        data_product[tmp] = newProduct;
+        mood = "create";
+        submit.innerHTML ="Create";
+        count.style.display = "block" 
     }
+    
         
 
 
@@ -84,8 +93,8 @@ function clear_data(){
 
 //-------------------READ Function---------------//
 
-function show_data()
-{
+function show_data(){
+    get_total()
     let table = "";
     
     for (let i = 0 ; i < data_product.length ; i++){
@@ -140,8 +149,91 @@ function update_data(i){
     taxes.value = data_product[i].taxes;
     ads.value = data_product[i].ads;
     discount.value = data_product[i].discount;
-    get_total()
+    get_total();
     count.style.display = "none";
-    category.value = data_product[i].category
+    category.value = data_product[i].category;
     submit.innerHTML = "Update";
+    mood = "update";
+    tmp = i ;
+    scroll ({
+        top:0,
+        behavior:"smooth",
+    })
+}
+
+
+//-------------------SEARCH Function---------------//
+
+let search_mood = "title";
+
+function get_search_mood(id){
+
+    let search = document.getElementById("search");
+
+    if(id == "searchTitle"){
+        search_mood = "title";
+        search.placeholder = "Search By Title"
+    }else{
+        search_mood="category"
+        search.placeholder = "Search By Category"
+    }
+search.focus()
+}
+
+function searchData(value){
+    let table ="";
+    if (search_mood == "title"){
+
+        for(let i =0 ; i <data_product.length; i++){
+            if(data_product[i].title.includes(value)){
+
+                table += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${data_product[i].title}</td>
+                        <td>${data_product[i].price}</td>
+                        <td>${data_product[i].taxes}</td>
+                        <td>${data_product[i].ads}</td>
+                        <td>${data_product[i].discount}</td>
+                        <td>${data_product[i].total}</td>
+                        <td>${data_product[i].category}</td>
+                        <td> <button onclick = "update_data(${i})" id="update">update</button> </td>
+                        <td> <button onclick ="delete_data(${i})" id="delete">delete</button> </td>
+                    </tr>
+                    `
+
+
+            }
+        }
+
+
+
+    }else{
+        for(let i =0 ; i <data_product.length; i++){
+            if(data_product[i].category.includes(value)){
+
+                table += `
+                    <tr>
+                        <td>${i}</td>
+                        <td>${data_product[i].title}</td>
+                        <td>${data_product[i].price}</td>
+                        <td>${data_product[i].taxes}</td>
+                        <td>${data_product[i].ads}</td>
+                        <td>${data_product[i].discount}</td>
+                        <td>${data_product[i].total}</td>
+                        <td>${data_product[i].category}</td>
+                        <td> <button onclick = "update_data(${i})" id="update">update</button> </td>
+                        <td> <button onclick ="delete_data(${i})" id="delete">delete</button> </td>
+                    </tr>
+                    `
+
+
+            }
+        }
+
+
+    }
+        document.getElementById('tbody').innerHTML = table;
+
+
 }
