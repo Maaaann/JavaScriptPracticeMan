@@ -99,7 +99,7 @@ function show_data()
             <td>${data_product[i].discount}</td>
             <td>${data_product[i].total}</td>
             <td>${data_product[i].category}</td>
-            <td> <button id="update">update</button> </td>
+            <td> <button onclick = "update_data(${i})" id="update">update</button> </td>
             <td> <button onclick ="delete_data(${i})" id="delete">delete</button> </td>
         </tr>
         `
@@ -132,4 +132,16 @@ function delete_all(){
     show_data() // redrawing the table
 }
 
+//-------------------UPDATE Function---------------//
 
+function update_data(i){
+    title.value = data_product[i].title;
+    price.value = data_product[i].price;
+    taxes.value = data_product[i].taxes;
+    ads.value = data_product[i].ads;
+    discount.value = data_product[i].discount;
+    get_total()
+    count.style.display = "none";
+    category.value = data_product[i].category
+    submit.innerHTML = "Update";
+}
