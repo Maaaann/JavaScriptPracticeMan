@@ -91,7 +91,7 @@ function show_data()
             <td>${data_product[i].total}</td>
             <td>${data_product[i].category}</td>
             <td> <button id="update">update</button> </td>
-            <td> <button id="delete">delete</button> </td>
+            <td> <button onclick ="delete_data(${i})" id="delete">delete</button> </td>
         </tr>
         `
     }
@@ -99,4 +99,11 @@ function show_data()
 
 } //end of READING product function
 show_data()
+
+function delete_data(i){
+    data_product.splice(i,1);
+    localStorage.product = JSON.stringify(data_product) // update the local storage
+    show_data() //to redraw the html table afer deleting 
+}
+
 
