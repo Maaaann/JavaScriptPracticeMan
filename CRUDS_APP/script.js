@@ -31,13 +31,15 @@ function get_total(){
 
 //---Local Storage Check---//
 let data_product;
-if( localStorage.data_product != null){
-    data_product = JSON.parse(localStorage.data_product);
+if( localStorage.product != null){
+    data_product = JSON.parse(localStorage.product);
 }else{
     data_product = [];
 }
+show_data()
 
-//-------------------The Create Function---------------//
+//-------------------The CREATE Function---------------//
+
 submit.onclick = function create_product(){
     let newProduct = {
         title:title.value,
@@ -54,11 +56,11 @@ submit.onclick = function create_product(){
     // storing the data local & converting it to strings  
     localStorage.setItem("product",JSON.stringify(data_product));
 
-    clear_data();
+    clear_data()
+    show_data()
 } //end of creating product function
 
-
-//-------------------Clear Inputs---------------//
+//-------------------CLEAR Inputs---------------//
 
 function clear_data(){
     title.value = "";
@@ -69,4 +71,32 @@ function clear_data(){
     count.value = "";
     category.value = "";
     total.innerHTML = "";
-};
+}
+
+//-------------------READ Function---------------//
+
+function show_data()
+{
+    let table = "";
+    
+    for (let i = 0 ; i < data_product.length ; i++){
+        table += `
+        <tr>
+            <td>${i}</td>
+            <td>${data_product[i].title}</td>
+            <td>${data_product[i].price}</td>
+            <td>${data_product[i].taxes}</td>
+            <td>${data_product[i].ads}</td>
+            <td>${data_product[i].discount}</td>
+            <td>${data_product[i].total}</td>
+            <td>${data_product[i].category}</td>
+            <td> <button id="update">update</button> </td>
+            <td> <button id="delete">delete</button> </td>
+        </tr>
+        `
+    }
+    document.getElementById('tbody').innerHTML = table;
+
+} //end of READING product function
+show_data()
+
