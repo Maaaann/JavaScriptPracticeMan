@@ -172,14 +172,15 @@ function get_search_mood(id){
 
     if(id == "searchTitle"){
         search_mood = "title";
-        search.placeholder = "Search By Title";
+
     }else{
         search_mood="category";
-        search.placeholder = "Search By Category";
+        
     }
-search.focus()
-search.value="";
-show_data()
+    search.placeholder = "Search By "+ search_mood;
+    search.focus()
+    search.value="";
+    show_data()
 }
 
 function searchData(value){
