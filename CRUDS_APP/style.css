@@ -66,6 +66,11 @@ button:hover{
     justify-content: space-between;
 }
 
+#delete_all{
+    margin:  20px 0px;
+
+}
+
 .btnsearch button{
     width: 45%;
 }

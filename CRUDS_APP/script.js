@@ -96,14 +96,29 @@ function show_data()
         `
     }
     document.getElementById('tbody').innerHTML = table;
+    let button_delete = document.getElementById("delete_all");
+    if(data_product.length > 0 ){
+        button_delete.innerHTML = `
+        <button onclick="delete_all()">Delete All</button>
+        `
+    }else{
+        button_delete.innerHTML ="";
+    }
 
 } //end of READING product function
+
 show_data()
+
+//-------------------DELETE Function---------------//
 
 function delete_data(i){
     data_product.splice(i,1);
     localStorage.product = JSON.stringify(data_product) // update the local storage
     show_data() //to redraw the html table afer deleting 
+}
+
+function delete_all(){
+    localStorage.clear() 
 }
 
 
