@@ -100,7 +100,7 @@ function show_data(){
     for (let i = 0 ; i < data_product.length ; i++){
         table += `
         <tr>
-            <td>${i}</td>
+            <td>${i+1}</td>
             <td>${data_product[i].title}</td>
             <td>${data_product[i].price}</td>
             <td>${data_product[i].taxes}</td>
