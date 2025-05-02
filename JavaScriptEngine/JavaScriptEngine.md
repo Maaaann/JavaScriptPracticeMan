@@ -2,7 +2,8 @@
 
 
 
-![[JsEngine.png]]
+![Engine Diagram](./JsEngine.png)
+
 
 
 ```
