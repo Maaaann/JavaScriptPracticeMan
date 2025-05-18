@@ -24,3 +24,20 @@ I'm currently learning JavaScript and using this repo to:
 - JavaScript (Vanilla)
 - HTML & CSS (for front-end structure and styling)
 - Browser DevTools
+
+## CRUD App
+
+One of the key projects in this repo is a **CRUD application**, where users can:
+- Create new items
+- View (Read) existing entries
+- Edit (Update) entries
+- Delete items
+
+[View The CRUD Application Folder](https://github.com/Maaaann/JavaScriptPracticeMan/tree/main/CRUDS_APP)
+
+
+This app helped me practice:
+- Working with arrays and objects
+- Event handling
+- DOM manipulation
+- Data flow logic
